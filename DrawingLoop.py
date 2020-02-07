@@ -22,6 +22,14 @@ def newTick():
 
 def Update():
     global ToDeletes,PointsList,LineList
+
+    if(Entry_modulo.isOnClock):
+        Entry_modulo.IncrementEntryValue(0.001)
+        Entry_modulo.needDrawingUpdate = True
+    if(Entry_Coef.isOnClock):
+        Entry_Coef.IncrementEntryValue(0.001)
+        Entry_Coef.needDrawingUpdate = True
+
     if(Entry_modulo.needDrawingUpdate == True or Entry_Coef.needDrawingUpdate):
         ToDeletes+=LineList
         LineList = cM.DrawLine(float(Entry_modulo.lastValidEntry),float(Entry_Coef.lastValidEntry))
