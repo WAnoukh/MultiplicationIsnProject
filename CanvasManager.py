@@ -48,11 +48,9 @@ def DrawLine(modulo,coef):
     canvasSize = Dic.GetCanvasSize()
     r = circleRay
     poses1 = PntMan.GeneratePointPos(modulo)
-    print(poses1)
     poses2=[]
     for pos in poses1 :
         poses2.append(((pos+0.5*pi)*coef)-0.5*pi)
-    print(poses2)
     coords1 = PntMan.GenerateCoordFromPntPos(poses1)
     coords2 = PntMan.GenerateCoordFromPntPos(poses2)
     return PntMan.DrawLinesFromTrigoCoords(canvasSize[0]/2,canvasSize[1]/2,r,coords1,coords2,canvas)

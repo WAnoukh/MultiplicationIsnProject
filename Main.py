@@ -40,8 +40,11 @@ UIC.SetImg(i1,i2,i3,i4,i5)
 Entry_modulo = UIC.NewUIEntry(UIColl,200,window,"Modulo :",defaultValue=5)
 Entry_Coef= UIC.NewUIEntry(UIColl,250,window,"Multiplicande :")
 
+####Set Time Scale
+Entry_TimeScale = UIC.NewUITimeScale(UIColl,300,window,"TimeScale :",defaultValue=0.01)
+
 ###DrawPoint
-dLoop.StartLooping(Entry_modulo,Entry_Coef,window,cM.GetCanvas())
+dLoop.StartLooping(Entry_modulo,Entry_Coef,Entry_TimeScale,window,cM.GetCanvas())
 
 window.mainloop()
 
