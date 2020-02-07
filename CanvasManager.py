@@ -9,7 +9,7 @@ CansColl = Dic.GridColumn.Canvas
 def InitCanvas(w,h,fenetre):
     global canvas
     canvas = Canvas(fenetre, width=w, height=h)
-    canvas.grid(column = CansColl,row=1,rowspan=60)
+    canvas.grid(column = CansColl,row=1,rowspan=7000)
     InitBackground()
 
 def SetCanvasBackgroundColor(color = "#DDDDDD"):

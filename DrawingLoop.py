@@ -24,7 +24,7 @@ def Update():
     global ToDeletes,PointsList,LineList
     if(Entry_modulo.needDrawingUpdate == True or Entry_Coef.needDrawingUpdate):
         ToDeletes+=LineList
-        LineList = cM.DrawLine(int(Entry_modulo.lastValidEntry),int(Entry_Coef.lastValidEntry))
+        LineList = cM.DrawLine(float(Entry_modulo.lastValidEntry),float(Entry_Coef.lastValidEntry))
         Entry_Coef.needDrawingUpdate = False
 
     if(Entry_modulo.needDrawingUpdate == True):
