@@ -27,7 +27,7 @@ def Update():
         Entry_modulo.IncrementEntryValue(0.001)
         Entry_modulo.needDrawingUpdate = True
     if(Entry_Coef.isOnClock):
-        Entry_Coef.IncrementEntryValue(0.001)
+        Entry_Coef.IncrementEntryValue(0.005)
         Entry_Coef.needDrawingUpdate = True
 
     if(Entry_modulo.needDrawingUpdate == True or Entry_Coef.needDrawingUpdate):

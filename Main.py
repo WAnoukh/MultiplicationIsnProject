@@ -38,7 +38,7 @@ UIC.SetImg(i1,i2,i3,i4,i5)
 
 ####SetEntries
 Entry_modulo = UIC.NewUIEntry(UIColl,200,window,"Modulo :",defaultValue=5)
-Entry_Coef= UIC.NewUIEntry(UIColl,250,window,"Coef :")
+Entry_Coef= UIC.NewUIEntry(UIColl,250,window,"Multiplicande :")
 
 ###DrawPoint
 dLoop.StartLooping(Entry_modulo,Entry_Coef,window,cM.GetCanvas())
