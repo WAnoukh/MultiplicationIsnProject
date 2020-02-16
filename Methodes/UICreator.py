@@ -64,7 +64,6 @@ class TScaleObj:
         self.EntryValue.set(defaultValue)
         self.lastValidEntry = defaultValue
 
-
 class EntryObj :
     needDrawingUpdate = True
     isOnClock = False
@@ -141,8 +140,19 @@ class EntryObj :
         self.EntryValue = DoubleVar()
         self.EntryValue.set(defaultValue)
         self.lastValidEntry = defaultValue
-        
-        
+
+class UiButton:
+    def __init__(self,cellx,celly,window,title,methode):
+        self.label = Label(window, text=title)
+        self.label.grid(column=cellx,row=celly, sticky = "W" )
+        self.buttSub = Button(window,text = "Export" ,command= methode)
+        self.buttSub.grid(column=cellx,row=celly+1, sticky = "W")
+
+def NewButton(cellx,celly,window,title,methode):
+    obj = UiButton(cellx,celly,window,title,methode)
+    return obj
+
+
 def NewUIEntry(cellx,celly,window,title,defaultValue= 0):
     obj = EntryObj(cellx,celly,window,title,defaultValue)
     return obj

@@ -42,3 +42,6 @@ def Update():
         Entry_modulo.needDrawingUpdate = False
 
     win.after(2,newTick)
+
+def GiveLines():
+    return LineList

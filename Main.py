@@ -3,11 +3,15 @@ import Dictionnaire as Dic
 import CanvasManager as cM
 import Methodes.UICreator as UIC
 import DrawingLoop as dLoop
+import DxfExport.DxfDrawing as DXFDraw
 
 def TakeImage(path,coef = 4):
     photo = PhotoImage(file = r"Img\{}".format(path))
     photoPlus = photo.subsample(coef, coef)  
     return photoPlus
+
+def ExportScreenToDXF():
+    DXFDraw.DrawScreen('Screen.dxf',dLoop.GiveLines(),cM.GetCanvas())
 
 CansColl, UIColl = Dic.GridColumn.Canvas,Dic.GridColumn.UI
 UiCellH = Dic.SoftInfo["UICell_Height"]
@@ -42,6 +46,9 @@ Entry_Coef= UIC.NewUIEntry(UIColl,250,window,"Multiplicande :")
 
 ####Set Time Scale
 Entry_TimeScale = UIC.NewUITimeScale(UIColl,300,window,"TimeScale :",defaultValue=0.01)
+
+####Set DXF Button
+button_DXF = UIC.NewButton(UIColl,1000,window,"Export to Dxf :",ExportScreenToDXF)
 
 ###DrawPoint
 dLoop.StartLooping(Entry_modulo,Entry_Coef,Entry_TimeScale,window,cM.GetCanvas())
