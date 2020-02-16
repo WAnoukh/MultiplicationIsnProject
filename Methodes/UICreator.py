@@ -129,7 +129,6 @@ class EntryObj :
 
     def IncrementEntryValue(self,inc):
         newValue = self.lastValidEntry + inc
-        print(float(self.lastValidEntry) , inc, "give" , float(self.lastValidEntry)+0.01)
         if self.CheckForValidEntry(newValue):
             self.UpdateValidEntry(newValue)
 
