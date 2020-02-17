@@ -1,5 +1,5 @@
 import ezdxf
-import tkinter
+from tkinter import Tk,Label,Scale,Entry,PhotoImage,Button,END
 import Dictionnaire
 
 CircleRay = 100
@@ -25,7 +25,9 @@ def ConvertCoordToDxfCoord(coord):
     pnt4 = ConvertPointOperation(coord[3],'y')
     return (pnt1,pnt2,pnt3,pnt4)
 
-def DrawScreen(name,lines,canvas):
+def StarExport():
+    global name,lines,canvas,entry
+    name = entry.get() + ".dxf"
     doc = ezdxf.new('R2010')  # create a new DXF R2010 drawing, official DXF version name: 'AC1024'
 
     msp = doc.modelspace()  # add new entities to the modelspace
@@ -36,3 +38,27 @@ def DrawScreen(name,lines,canvas):
         msp.add_line((newcoord[0], newcoord[1]), (newcoord[2], newcoord[3]))  # add a LINE entity
 
     doc.saveas(name)
+
+def DrawScreen(n,l,c):
+    global name,lines,canvas,entry
+    name,lines,canvas= n,l,c
+
+    #Create the window
+    window = Tk()
+
+    #Set the title
+    window.title("Exporting panel")
+
+    label = Label(window,text="FileName")
+    label.grid(sticky = "W" )
+
+    entry = Entry(window)
+    entry.grid()
+    entry.insert(END, 'NewVector')
+
+    label = Label(window,text=".dxf")
+    label.grid(row=1,column=1,sticky = "W")
+
+    button = Button(window,text = "Export",command = StarExport)
+    button.grid(sticky = "W",row=1,column=2)
+    window.mainloop()
