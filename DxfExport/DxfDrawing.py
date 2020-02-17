@@ -1,5 +1,5 @@
 import ezdxf
-from tkinter import Tk,Label,Scale,Entry,PhotoImage,Button,END
+from tkinter import Tk,Label,Entry,Button,END
 import Dictionnaire
 
 CircleRay = 100
@@ -26,7 +26,7 @@ def ConvertCoordToDxfCoord(coord):
     return (pnt1,pnt2,pnt3,pnt4)
 
 def StarExport():
-    global name,lines,canvas,entry
+    global name,lines,canvas,entry,window
     name = entry.get() + ".dxf"
     doc = ezdxf.new('R2010')  # create a new DXF R2010 drawing, official DXF version name: 'AC1024'
 
@@ -38,9 +38,10 @@ def StarExport():
         msp.add_line((newcoord[0], newcoord[1]), (newcoord[2], newcoord[3]))  # add a LINE entity
 
     doc.saveas(name)
+    window.destroy()
 
 def DrawScreen(n,l,c):
-    global name,lines,canvas,entry
+    global name,lines,canvas,entry,window
     name,lines,canvas= n,l,c
 
     #Create the window
