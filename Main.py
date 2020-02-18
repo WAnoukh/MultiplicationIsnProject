@@ -3,8 +3,11 @@ import Dictionnaire as Dic
 import CanvasManager as cM
 import Methodes.UICreator as UIC
 import DrawingLoop as dLoop
-import DxfExport.DxfDrawing as DXFDraw
-
+dxfWorking = True
+try :
+    import DxfExport.DxfDrawing as DXFDraw
+except:
+    dxfWorking = False
 def TakeImage(path,coef = 4):
     photo = PhotoImage(file = r"Img\{}".format(path))
     photoPlus = photo.subsample(coef, coef)  
@@ -47,8 +50,13 @@ Entry_Coef= UIC.NewUIEntry(UIColl,250,window,"Multiplicande :")
 ####Set Time Scale
 Entry_TimeScale = UIC.NewUITimeScale(UIColl,300,window,"TimeScale :",defaultValue=0.01)
 
-####Set DXF Button
-button_DXF = UIC.NewButton(UIColl,1000,window,"Export to Dxf :",ExportScreenToDXF)
+if(dxfWorking):
+    ####Set DXF Button
+    button_DXF = UIC.NewButton(UIColl,1000,window,"Export to Dxf :",ExportScreenToDXF)
+else : 
+    errorLabel = Label(window,text = "Ez Dxf not installed on this computer")
+    errorLabel.grid(column = 2 , row = 1000, sticky = "W")
+
 
 ###DrawPoint
 dLoop.StartLooping(Entry_modulo,Entry_Coef,Entry_TimeScale,window,cM.GetCanvas())
