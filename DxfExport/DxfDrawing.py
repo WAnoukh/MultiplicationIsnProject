@@ -1,6 +1,10 @@
 import ezdxf
 from tkinter import Tk,Label,Entry,Button,END
 import Dictionnaire
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 30cd4ed... error working
 CircleRay = 100
 
 def ConvertPointOperation(point,axis):
