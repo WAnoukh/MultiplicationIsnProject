@@ -1,8 +1,6 @@
 import ezdxf
 from tkinter import Tk,Label,Entry,Button,END
 import Dictionnaire
-import os.path as ospath
-import DxfExport.ExportingError as expError
 CircleRay = 100
 
 def ConvertPointOperation(point,axis):
