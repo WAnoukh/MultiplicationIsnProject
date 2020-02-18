@@ -143,7 +143,7 @@ class EntryObj :
 
 class UiButton:
     def __init__(self,cellx,celly,window,title,methode):
-        self.label = Label(window, text=title)
+        self.label = Label(window, text=title,bg="#DDDDDD")
         self.label.grid(column=cellx,row=celly, sticky = "W" )
         self.buttSub = Button(window,text = "Export" ,command= methode)
         self.buttSub.grid(column=cellx,row=celly+1, sticky = "W")

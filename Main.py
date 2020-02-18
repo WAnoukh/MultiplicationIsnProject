@@ -54,8 +54,8 @@ if(dxfWorking):
     ####Set DXF Button
     button_DXF = UIC.NewButton(UIColl,1000,window,"Export to Dxf :",ExportScreenToDXF)
 else : 
-    errorLabel = Label(window,text = "Ez Dxf not installed on this computer")
-    errorLabel.grid(column = 2 , row = 1000, sticky = "W")
+    errorLabel = Label(window,text = "ezdxf not installed on this computer",bg = "#DD2222",fg = "#FFFFFF")
+    errorLabel.grid(column = 1 , row = 1000, sticky = "W",columnspan=4)
 
 
 ###DrawPoint
