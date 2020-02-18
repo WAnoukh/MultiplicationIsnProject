@@ -1,8 +1,12 @@
 import ezdxf
 from tkinter import Tk,Label,Entry,Button,END
 import Dictionnaire
+<<<<<<< HEAD
 import os.path as ospath
 import DxfExport.ExportingError as expError
+=======
+
+>>>>>>> parent of 30cd4ed... error working
 CircleRay = 100
 
 def ConvertPointOperation(point,axis):
