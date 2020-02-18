@@ -1,7 +1,9 @@
 import ezdxf
 from tkinter import Tk,Label,Entry,Button,END
 import Dictionnaire
-#heycommenthere
+import os.path as ospath
+import DxfExport.ExportingError as expError
+
 CircleRay = 100
 
 def ConvertPointOperation(point,axis):
@@ -28,21 +30,29 @@ def ConvertCoordToDxfCoord(coord):
 def StarExport():
     global name,lines,canvas,entry,window
     name = entry.get() + ".dxf"
-    doc = ezdxf.new('R2010')  # create a new DXF R2010 drawing, official DXF version name: 'AC1024'
+    if(ospath.isfile(name)):
+        expError.ReturnError("There is already a dxf file named : " + name)
+    else:
+        doc = ezdxf.new('R2010')  # create a new DXF R2010 drawing, official DXF version name: 'AC1024'
 
-    msp = doc.modelspace()  # add new entities to the modelspace
-    msp.add_circle((0,0),CircleRay)
-    for line in lines :
-        coord = canvas.coords(line)
-        newcoord = ConvertCoordToDxfCoord(coord)
-        msp.add_line((newcoord[0], newcoord[1]), (newcoord[2], newcoord[3]))  # add a LINE entity
+        msp = doc.modelspace()  # add new entities to the modelspace
+        msp.add_circle((0,0),CircleRay)
+        for line in lines :
+            coord = canvas.coords(line)
+            newcoord = ConvertCoordToDxfCoord(coord)
+            msp.add_line((newcoord[0], newcoord[1]), (newcoord[2], newcoord[3]))  # add a LINE entity
 
-    doc.saveas(name)
-    window.destroy()
+        doc.saveas(name)
+        window.destroy()
 
 def DrawScreen(n,l,c):
     global name,lines,canvas,entry,window
     name,lines,canvas= n,l,c
+    filename = "NewVector"
+    i=2
+    while(ospath.isfile(filename+".dxf")):
+        filename = "NewVector" +"("+ str(i)+")"
+        i+=1
 
     #Create the window
     window = Tk()
@@ -55,7 +65,7 @@ def DrawScreen(n,l,c):
 
     entry = Entry(window)
     entry.grid()
-    entry.insert(END, 'NewVector')
+    entry.insert(END, filename)
 
     label = Label(window,text=".dxf")
     label.grid(row=1,column=1,sticky = "W")
