@@ -1,8 +1,13 @@
-import ezdxf
+
 from tkinter import Tk,Label,Entry,Button,END
 import Dictionnaire
 import os.path as ospath
 import DxfExport.ExportingError as expError
+
+import sys
+# insert at 1, 0 is the script path (or '' in REPL)
+sys.path.append(ospath.dirname(ospath.realpath(__file__))+'/libs')
+import ezdxf
 
 CircleRay = 100
 

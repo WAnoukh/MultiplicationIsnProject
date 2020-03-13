@@ -9,7 +9,7 @@ try :
 except:
     dxfWorking = False
 def TakeImage(path,coef = 4):
-    photo = PhotoImage(file = r"Img\{}".format(path))
+    photo = PhotoImage(file = r"Img/{}".format(path))
     photoPlus = photo.subsample(coef, coef)  
     return photoPlus
 
