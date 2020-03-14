@@ -1,4 +1,4 @@
-from tkinter import Tk,Label,Scale,Entry,Button ,END,DoubleVar,PhotoImage
+from tkinter import Tk,Label,Scale,Entry,Button ,END,DoubleVar,PhotoImage, SUNKEN, RAISED
 
 def SetImg(plus,minus,valid,clock,clock2):
     global image_plus,image_minus,image_valid,image_clock,image_clock2
@@ -148,10 +148,31 @@ class UiButton:
         self.buttSub = Button(window,text = "Export" ,command= methode)
         self.buttSub.grid(column=cellx,row=celly+1, sticky = "W")
 
+class SwitchBut:
+    def __init__(self,cellx,celly,window,title,defaultSwitch):
+        self.switchState = defaultSwitch
+
+        self.label = Label(window, text=title,bg="#DDDDDD")
+        self.label.grid(column=cellx,row=celly, sticky = "W" )
+        self.but = Button(window,text = title ,command= self.Switch)
+        self.but.grid(column=cellx,row=celly+1, sticky = "W",columnspan=4)
+        self.ActualiseLook()
+    
+    def Switch(self):
+        self.switchState = not self.switchState
+        self.ActualiseLook()
+
+
+    def ActualiseLook(self):
+        if(self.switchState):
+            self.but.config(relief=SUNKEN,text = "3D with complex numbers")
+        else:
+            self.but.config(relief=RAISED,text = "2D with real numbers")
+
+
 def NewButton(cellx,celly,window,title,methode):
     obj = UiButton(cellx,celly,window,title,methode)
     return obj
-
 
 def NewUIEntry(cellx,celly,window,title,defaultValue= 0):
     obj = EntryObj(cellx,celly,window,title,defaultValue)
@@ -159,4 +180,8 @@ def NewUIEntry(cellx,celly,window,title,defaultValue= 0):
 
 def NewUITimeScale (cellx,celly,window,title,defaultValue= 0):
     obj = TScaleObj(cellx,celly,window,title,defaultValue)
+    return obj
+
+def NewSwitchBut (cellx,celly,window,title,defaultSwitch= False ):
+    obj = SwitchBut(cellx,celly,window,title,defaultSwitch)
     return obj

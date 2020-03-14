@@ -57,6 +57,8 @@ else :
     errorLabel = Label(window,text = "ezdxf not installed on this computer",bg = "#DD2222",fg = "#FFFFFF")
     errorLabel.grid(column = 1 , row = 1000, sticky = "W",columnspan=4)
 
+###Set 3D switcher
+perspectiveSwitch = UIC.NewSwitchBut(UIColl,1100,window,"Switch perspective :")
 
 ###DrawPoint
 dLoop.StartLooping(Entry_modulo,Entry_Coef,Entry_TimeScale,window,cM.GetCanvas())
