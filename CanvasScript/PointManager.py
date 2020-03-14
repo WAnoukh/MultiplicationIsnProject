@@ -4,7 +4,7 @@ def GeneratePointPos(nb):
     '''
     Generate Points To 0 to 2*pi from the origin
 
-    :param int nb: number of point to generate
+    :param float nb: number of point to generate
     return position on x axis
         (Need to be converted in x/y axis in a circle perimeter.)
     '''
@@ -17,7 +17,7 @@ def GeneratePointPos(nb):
         nb=1
         gap = (2*pi)/(nb)
 
-    for i in range(nb):
+    for i in range(int(nb)):
         positions.append(i*gap-(pi/2))
     return positions
 

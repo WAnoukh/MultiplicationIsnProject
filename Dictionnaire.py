@@ -6,9 +6,9 @@ SoftInfo = {
 }
 
 Settings = {
-    "Canvas_width": 600,
-    "Canvas_height": 600,
-    "CircleSize": 0.9
+    "Canvas_width": 860,
+    "Canvas_height": 860,
+    "CircleSize": 0.98
 }
 
 class GridColumn(auto):
