@@ -67,12 +67,13 @@ else :
     errorLabel = Label(window,text = "ezdxf not installed on this computer",bg = "#DD2222",fg = "#FFFFFF")
     errorLabel.grid(column = 1 , row = 1000, sticky = "W",columnspan=4)
 
-###Set 3D switcher
-perspectiveSwitch = UIC.NewSwitchBut(UIColl,1100,window,"Switch perspective :",PerspectiveSwitch,
-enableT = "3D with complex numbers",disableT = "2D with real numbers")
+###Set 3D switcher 
+##DisableForTheMoment
+'''perspectiveSwitch = UIC.NewSwitchBut(UIColl,1100,window,"Switch perspective :",PerspectiveSwitch,
+enableT = "3D with complex numbers",disableT = "2D with real numbers")'''
 
 ###Set Color button
-colorSwitch = UIC.NewSwitchBut(UIColl,1200,window,"Switch color mode",ColorSwitch,
+colorSwitch = UIC.NewSwitchBut(UIColl,1100,window,"Switch color mode",ColorSwitch,
 enableT = "Colored by length")
 
 ###DrawPoint
