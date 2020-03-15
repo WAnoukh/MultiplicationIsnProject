@@ -8,6 +8,7 @@ try :
     import DxfExport.DxfDrawing as DXFDraw
 except:
     dxfWorking = False
+
 def TakeImage(path,coef = 4):
     photo = PhotoImage(file = r"Img/{}".format(path))
     photoPlus = photo.subsample(coef, coef)  
@@ -15,6 +16,15 @@ def TakeImage(path,coef = 4):
 
 def ExportScreenToDXF():
     DXFDraw.DrawScreen('Screen.dxf',dLoop.GiveLines(),cM.GetCanvas())
+
+def PerspectiveSwitch(state):
+    print("perpective switched")
+    pass
+
+def ColorSwitch(state):
+    print("color switched")
+    dLoop.SwitchColorMode(state)
+    pass
 
 CansColl, UIColl = Dic.GridColumn.Canvas,Dic.GridColumn.UI
 UiCellH = Dic.SoftInfo["UICell_Height"]
@@ -58,7 +68,12 @@ else :
     errorLabel.grid(column = 1 , row = 1000, sticky = "W",columnspan=4)
 
 ###Set 3D switcher
-perspectiveSwitch = UIC.NewSwitchBut(UIColl,1100,window,"Switch perspective :")
+perspectiveSwitch = UIC.NewSwitchBut(UIColl,1100,window,"Switch perspective :",PerspectiveSwitch,
+enableT = "3D with complex numbers",disableT = "2D with real numbers")
+
+###Set Color button
+colorSwitch = UIC.NewSwitchBut(UIColl,1200,window,"Switch color mode",ColorSwitch,
+enableT = "Colored by length")
 
 ###DrawPoint
 dLoop.StartLooping(Entry_modulo,Entry_Coef,Entry_TimeScale,window,cM.GetCanvas())

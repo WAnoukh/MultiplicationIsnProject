@@ -1,4 +1,4 @@
-from tkinter import Tk,Label,Scale,Entry,Button ,END,DoubleVar,PhotoImage, SUNKEN, RAISED
+from tkinter import Tk,Label,Scale,Entry,Button ,END,DoubleVar,PhotoImage, SUNKEN, RAISED,StringVar
 
 def SetImg(plus,minus,valid,clock,clock2):
     global image_plus,image_minus,image_valid,image_clock,image_clock2
@@ -149,25 +149,37 @@ class UiButton:
         self.buttSub.grid(column=cellx,row=celly+1, sticky = "W")
 
 class SwitchBut:
-    def __init__(self,cellx,celly,window,title,defaultSwitch):
+    def __init__(self,cellx,celly,window,title,defaultSwitch,cmd,enableT,disableT):
         self.switchState = defaultSwitch
 
         self.label = Label(window, text=title,bg="#DDDDDD")
         self.label.grid(column=cellx,row=celly, sticky = "W" )
-        self.but = Button(window,text = title ,command= self.Switch)
+
+        self.butText = StringVar()
+        self.but = Button(window,command= self.Switch,text = self.butText)
         self.but.grid(column=cellx,row=celly+1, sticky = "W",columnspan=4)
+
+        self.enableText = enableT
+        self.disableText = disableT
+
+        self.cdm = cmd
+
         self.ActualiseLook()
-    
+
     def Switch(self):
         self.switchState = not self.switchState
         self.ActualiseLook()
+        self.cdm(self.switchState)
 
 
     def ActualiseLook(self):
         if(self.switchState):
-            self.but.config(relief=SUNKEN,text = "3D with complex numbers")
+            self.butText.set(self.enableText)
+            self.but.config(relief=SUNKEN,text = self.enableText)
         else:
-            self.but.config(relief=RAISED,text = "2D with real numbers")
+            self.butText.set(self.disableText)
+            self.but.config(relief=RAISED,text = self.disableText)
+        
 
 
 def NewButton(cellx,celly,window,title,methode):
@@ -182,6 +194,6 @@ def NewUITimeScale (cellx,celly,window,title,defaultValue= 0):
     obj = TScaleObj(cellx,celly,window,title,defaultValue)
     return obj
 
-def NewSwitchBut (cellx,celly,window,title,defaultSwitch= False ):
-    obj = SwitchBut(cellx,celly,window,title,defaultSwitch)
+def NewSwitchBut (cellx,celly,window,title,cmd,defaultSwitch= False,enableT="Enable",disableT ="Disable"):
+    obj = SwitchBut(cellx,celly,window,title,defaultSwitch,cmd,enableT,disableT)
     return obj
