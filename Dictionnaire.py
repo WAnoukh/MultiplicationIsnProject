@@ -7,7 +7,7 @@ SoftInfo = {
 
 Settings = {
     "Canvas_width": 860,
-    "Canvas_height": 860,
+    "Canvas_height": 800,
     "CircleSize": 0.98
 }
 

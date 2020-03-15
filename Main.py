@@ -26,6 +26,9 @@ def ColorSwitch(state):
     dLoop.SwitchColorMode(state)
     pass
 
+def DotDrawing(state):
+    dLoop.SwitchDotDrawing(state)
+
 CansColl, UIColl = Dic.GridColumn.Canvas,Dic.GridColumn.UI
 UiCellH = Dic.SoftInfo["UICell_Height"]
 #Create the window
@@ -75,6 +78,9 @@ enableT = "3D with complex numbers",disableT = "2D with real numbers")'''
 ###Set Color button
 colorSwitch = UIC.NewSwitchBut(UIColl,1100,window,"Switch color mode",ColorSwitch,
 enableT = "Colored by length")
+
+###Set dot switcher
+colorSwitch = UIC.NewSwitchBut(UIColl,900,window,"Draw Dots",DotDrawing,defaultSwitch=True)
 
 ###DrawPoint
 dLoop.StartLooping(Entry_modulo,Entry_Coef,Entry_TimeScale,window,cM.GetCanvas())

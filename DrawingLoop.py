@@ -2,6 +2,7 @@ import CanvasManager as cM
 from math import sqrt
 from Dictionnaire import GetCanvasSize,Settings
 from Methodes.DrawingMethodes import ColorLerp
+drawDot= True
 colorMode = False
 lineColor = ((255,0,0),(0,255,255))
 def SwitchColorMode(mode,c1=(255,0,0),c2 = (0,255,255)):
@@ -12,6 +13,13 @@ def SwitchColorMode(mode,c1=(255,0,0),c2 = (0,255,255)):
         ColorLines()
     else:
         resetColorLine()
+
+def SwitchDotDrawing(state):
+    global Entry_modulo
+    if(state):
+        Entry_modulo.needDrawingUpdate = True
+    global drawDot
+    drawDot=state
 
 def resetColorLine():
     list = GiveLines()
@@ -75,10 +83,14 @@ def Update():
         if(colorMode):
             ColorLines()
 
-    if(Entry_modulo.needDrawingUpdate == True):
+    if(drawDot):
+        if(Entry_modulo.needDrawingUpdate == True):
+            ToDeletes+=PointsList
+            PointsList = cM.DrawPoint(int(Entry_modulo.lastValidEntry))
+            Entry_modulo.needDrawingUpdate = False
+    else:
         ToDeletes+=PointsList
-        PointsList = cM.DrawPoint(int(Entry_modulo.lastValidEntry))
-        Entry_modulo.needDrawingUpdate = False
+        PointsList = []
 
     win.after(2,newTick)
 
