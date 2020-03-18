@@ -4,6 +4,7 @@ from Dictionnaire import GetCanvasSize,Settings
 drawDot= True
 colorMode = False
 lineColor = ((255,0,0),(0,255,255))
+from ColorGradient.ColorGradient import StartInterface,StopInterface
 
 ###ImportColor + Color editor
 import ColorGradient.ColorGradient as clGrad
@@ -14,8 +15,10 @@ def SwitchColorMode(mode,c1=(255,0,0),c2 = (0,255,255)):
     if(mode):
         lineColor=(c1,c2)
         ColorLines()
+        StartInterface()
     else:
         resetColorLine()
+        StopInterface()
 
 def SwitchDotDrawing(state):
     global Entry_modulo

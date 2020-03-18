@@ -8,17 +8,24 @@ path.append(str(pth)+"/Methodes")
 from DrawingMethodes import ColorLerp
 
 c2,c1 = (255,0,0),(0,255,255)
-lastScale = 1
+lastScale = 50
 interColor = (0,0,0)
 
 def SetMaster(Master,Update):
     global master,dLUpdate
     master = Master
     dLUpdate = Update
+
+def StartInterface():
+    global master,grad
     grad = Toplevel(master)
     my_gui = ColorGraduitGui(grad)
     grad.grid()
     grad.mainloop()
+
+def StopInterface():
+    global grad
+    grad.destroy()
 
 def SetInterColor():
     global interColor
@@ -48,8 +55,7 @@ class ColorGraduitGui:
         self.mainScale.grid()
         self.mainScale.set(50)
         global lastScale
-        lastScale = self.mainScale.get()
-
+        self.mainScale.set(lastScale)
         self.lines = []
         self.DrawGradient()
         self.Update()
