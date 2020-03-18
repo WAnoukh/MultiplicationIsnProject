@@ -1,10 +1,13 @@
 import CanvasManager as cM
 from math import sqrt
 from Dictionnaire import GetCanvasSize,Settings
-from Methodes.DrawingMethodes import ColorLerp
 drawDot= True
 colorMode = False
 lineColor = ((255,0,0),(0,255,255))
+
+###ImportColor + Color editor
+import ColorGradient.ColorGradient as clGrad
+
 def SwitchColorMode(mode,c1=(255,0,0),c2 = (0,255,255)):
     global colorMode,lineColor
     colorMode = mode
@@ -41,7 +44,7 @@ def ColorLines():
             minsize = size[1]
         maxColorSize = minsize * Settings["CircleSize"]
         colorCoef = (distance/maxColorSize)
-        newColor = ColorLerp(lineColor[0],lineColor[1],colorCoef)
+        newColor = clGrad.GetColorInGradient(colorCoef*100)
         canvas.itemconfig(line,fill='#{:02x}{:02x}{:02x}'.format( newColor[0], newColor[1] , newColor[2] ))
 
 
