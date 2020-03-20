@@ -85,10 +85,8 @@ colorSwitch = UIC.NewSwitchBut(UIColl,900,window,"Draw Dots",DotDrawing,defaultS
 ###DrawPoint
 dLoop.StartLooping(Entry_modulo,Entry_Coef,Entry_TimeScale,window,cM.GetCanvas())
 
+###Init Gradient link
 from ColorGradient.ColorGradient import SetMaster
 SetMaster(window,dLoop.ColorLines)
 
-
-
 window.mainloop()
-
