@@ -38,7 +38,7 @@ def StarExport():
     if(ospath.isfile(name)):
         expError.ReturnError("There is already a dxf file named : " + name)
     else:
-        doc = ezdxf.new('R2004')  # create a new DXF R2010 drawing, official DXF version name: 'AC1024'
+        doc = ezdxf.new('R2007')  # create a new DXF R2010 drawing, official DXF version name: 'AC1024'
 
         msp = doc.modelspace()  # add new entities to the modelspace
         msp.add_circle((0,0),CircleRay)
@@ -47,6 +47,7 @@ def StarExport():
             color = canvas.itemconfigure(line,"fill")
             color =color[4]
             if(color == "black"):
+                color="255255255"
                 decColor = "000"    
             else :
                 decColor = "{:03d}{:03d}{:03d}".format(int(color[1:3],16),int(color[3:5],16),int(color[5:7],16))
